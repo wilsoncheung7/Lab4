@@ -179,13 +179,10 @@ public class OwnedPiggyBank {
 
    	 if (this.owner == user) {
    		 for (Coin c : charted.descendingKeySet()) {
-   			 for (int i = 0; i < 2; i++) {
-   				 if (c.getValue() <= value) {
-   					 coins.add(c);
+   			 while(charted.get(c)>0&&value>=c.getValue()) {
+   					 coins.add(this.remove(this.owner,c));
    					 value -= c.getValue();
-   				 }
    			 }
-
    		 }
    	 }
    	 return coins;
